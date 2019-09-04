@@ -27,15 +27,17 @@ namespace GradeBook.GradeBooks
             }
 
             Array.Sort(grades);
+            Array.Reverse(grades);
+
             char[] gradesList = { 'A', 'B', 'C', 'D' };
 
-            for (var i = 1; i < 5; i++)
+            for (var i = 0; i < 4; i++)
             {
                 // compute respective index.
-                var index = (int) Math.Ceiling(Students.Count * 0.2);
-                if (averageGrade > grades[index])
+                var index = (int) Math.Ceiling(Students.Count * 0.2 * i);
+                if (averageGrade >= grades[index])
                 {
-                    return gradesList[i - 1];
+                    return gradesList[i];
                 }
             }
 
