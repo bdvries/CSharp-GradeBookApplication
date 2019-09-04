@@ -3,35 +3,6 @@ using System;
 
 namespace GradeBook.GradeBooks
 {
-    public class StudentCompare : IComparable<StudentCompare>
-    {
-        Student student;
-        double grade;
-
-        public StudentCompare(double myGrade, Student myStudent)
-        {
-            student = myStudent;
-            grade = myGrade;
-        }
-
-        public int CompareTo(StudentCompare obj)
-        {
-            StudentCompare student = obj as StudentCompare;
-            if (this.grade == student.grade)
-            {
-                return 0;
-            }
-            else if (this.grade < student.grade)
-            {
-                return -1;
-            }
-            return 1;
-        }
-    }
-}
-
-namespace GradeBook.GradeBooks
-{
     public class RankedGradeBook : BaseGradeBook
     {
         public RankedGradeBook(string name) : base(name)
@@ -47,11 +18,11 @@ namespace GradeBook.GradeBooks
             }
 
             // Make an array of all grades.
-            var grades = new (double, Student)[Students.Count];
+            var grades = new double[Students.Count];
             int count = 0;
             foreach (Student student in Students)
             {
-                grades[count] = (student.AverageGrade, student); 
+                grades[count] = student.AverageGrade; 
                 count++;
             }
 
@@ -62,7 +33,7 @@ namespace GradeBook.GradeBooks
             {
                 // compute respective index.
                 var index = (int) Math.Ceiling(Students.Count * 0.2);
-                if (averageGrade > grades[index].Item1)
+                if (averageGrade > grades[index])
                 {
                     return gradesList[i - 1];
                 }
