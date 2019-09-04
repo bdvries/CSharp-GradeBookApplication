@@ -64,9 +64,8 @@ namespace GradeBook.GradeBooks
                 var index = (int) Math.Ceiling(Students.Count * 0.2);
                 if (averageGrade > grades[index].Item1)
                 {
-                    return gradesList[index - 1];
+                    return gradesList[i - 1];
                 }
-
             }
 
             return 'F';
